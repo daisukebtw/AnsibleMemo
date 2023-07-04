@@ -8,6 +8,3 @@ target3 ansible_host=192.168.233.132
 [targets:children]
 dev
 prod
-
-[targets:vars]
-ansible_sudo_pass=pass
