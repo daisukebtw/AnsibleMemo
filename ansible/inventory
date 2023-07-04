@@ -1,14 +1,13 @@
 [dev]
-target1 ansible_host=192.168.233.130 ansible_ssh_user=target ansible_ssh_pass=pass
+target1 ansible_host=192.168.233.130
 
 [prod]
-target2 ansible_host=192.168.233.131 ansible_ssh_user=target ansible_ssh_pass=pass
-target3 ansible_host=192.168.233.132 ansible_ssh_user=target ansible_ssh_pass=pass
+target2 ansible_host=192.168.233.131
+target3 ansible_host=192.168.233.132
 
 [targets:children]
 dev
 prod
 
 [targets:vars]
-ansible_sudo_pass=pass
 ansible_sudo_pass=pass
