@@ -8,16 +8,42 @@
     destin_file: /var/www/html
 
   tasks:
-  - name: Install Apache
-    yum: name=httpd state=installed
 
-  - name: Copy page to servers
-    copy: src={{ source_file }} dest={{ destin_file }}
-    notify: Restart Apache
+  - block:  # RedHat Block
 
-  - name: Start service and enable Start on boot
-    service: name=httpd state=started enabled=yes
+# Install Apache on RedHat
+    - name: Install Apache RedHat
+      yum: name=httpd state=installed
+
+    - name: Copy page to servers
+      copy: src={{ source_file }} dest={{ destin_file }}
+      notify: Restart Apache RedHat
+
+    # Enable Service RedHat
+    - name: Start service and enable Start on boot (RedHat)
+      service: name=httpd state=started enabled=yes
+
+    when: ansible_os_family == "RedHat"
+
+  - block:  # Debian Block
+
+    # Install Apache on Debian
+    - name: Install Apache Ubuntu
+      apt-get: name=apache2 state=installed
+
+    - name: Copy page to servers
+      copy: src={{ source_file }} dest={{ destin_file }}
+      notify: Restart Apache Debian
+
+    # Enable Service Debian
+    - name: Start service and enable Start on boot (Debian)
+      service: name=apache2 state=started enabled=yes
+
+    when: ansible_os_family == "Debian"
 
   handlers:
-  - name: Restart Apache
+  - name: Restart Apache RedHat
     service: name=httpd state=restarted
+  
+  - name: Restart Apache Debian
+    service: name=apache2 state=restarted
