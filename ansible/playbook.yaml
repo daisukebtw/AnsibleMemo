@@ -17,3 +17,9 @@
   - name: 
     debug: 
       msg: "Secret word: {{ message1 }}"
+
+  - name:
+    set_fact: full_message="{{ message1 }} {{ message2 }} {{ secret }}"
+  
+  - debug:
+      var: full_message
