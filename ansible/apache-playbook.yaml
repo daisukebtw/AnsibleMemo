@@ -9,4 +9,3 @@
 
   - name: Start Apache and enable Start on boot
     service: name=httpd state=started enabled=yes
-    

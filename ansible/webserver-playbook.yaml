@@ -1,0 +1,23 @@
+---
+- name: Install Apache and Upload my Web page
+  hosts: all
+  become: yes
+
+  vars:
+    source_file: ./page/index.html
+    destin_file: /var/www/html
+
+  tasks:
+  - name: Install Apache
+    yum: name=httpd state=installed
+
+  - name: Copy page to servers
+    copy: src={{ source_file }} dest={{ destin_file }}
+    notify: Restart Apache
+
+  - name: Start service and enable Start on boot
+    service: name=httpd state=started enabled=yes
+
+  handlers:
+  - name: Restart Apache
+    service: name=httpd state=restarted
