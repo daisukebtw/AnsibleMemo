@@ -1,0 +1,19 @@
+---
+- name: Variable playbook
+  hosts: all
+  become: yes
+
+  vars:
+    message1: Hello
+    message2: World
+    secret: password
+
+
+  tasks:
+  - name: Print Secret Variable
+    debug:
+      var: secret
+
+  - name: 
+    debug: 
+      msg: "Secret word: {{ message1 }}"
