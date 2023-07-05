@@ -28,7 +28,7 @@
   - block:  # Debian Block
 
     # Install Apache on Debian
-    - name: Install Apache Ubuntu
+    - name: Install Apache Debian
       apt-get: name=apache2 state=installed
 
     - name: Copy page to servers
