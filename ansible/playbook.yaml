@@ -23,3 +23,9 @@
   
   - debug:
       var: full_message
+
+  - shell: uptime
+    register: results
+
+  - debug:
+      var: {{ results }}
