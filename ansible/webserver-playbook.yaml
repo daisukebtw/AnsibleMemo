@@ -11,7 +11,7 @@
 
   - block:  # RedHat Block
 
-# Install Apache on RedHat
+    # Install Apache on RedHat
     - name: Install Apache RedHat
       yum: name=httpd state=installed
 
