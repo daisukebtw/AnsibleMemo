@@ -21,3 +21,11 @@
   - name: Print output
     debug:
       var: output.stdout
+
+  - name: Intsall list of packages
+    yum: name={{ item }} state=installed
+    loop:
+      - python3
+      - tree
+      - mlocate
+      - epel-release
