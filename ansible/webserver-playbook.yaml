@@ -21,17 +21,17 @@
 
     when: ansible_os_family == "RedHat"
 
-  - block:  # Debian Block
-
-    # Install Apache on Debian
-    - name: Install Apache Debian
-      apt-get: name=apache2 state=installed
-
-    # Enable Service Debian
-    - name: Start service and enable Start on boot (Debian)
-      service: name=apache2 state=started enabled=yes
-
-    when: ansible_os_family == "Debian"
+#  - block:  # Debian Block
+#
+#    # Install Apache on Debian
+#    - name: Install Apache Debian
+#      apt-get: name=apache2 state=installed
+#
+#    # Enable Service Debian
+#    - name: Start service and enable Start on boot (Debian)
+#      service: name=apache2 state=started enabled=yes
+#
+#    when: ansible_os_family == "Debian"
 
 
 
@@ -47,7 +47,7 @@
     
     notify:
       - Restart Apache RedHat
-      - Restart Apache Debian
+#      - Restart Apache Debian
 
       
 
@@ -57,6 +57,6 @@
     service: name=httpd state=restarted
     when: ansible_os_family == "RedHat"
   
-  - name: Restart Apache Debian
-    service: name=apache2 state=restarted
-    when: ansible_os_family == "Debian"
+#  - name: Restart Apache Debian
+#    service: name=apache2 state=restarted
+#    when: ansible_os_family == "Debian"
