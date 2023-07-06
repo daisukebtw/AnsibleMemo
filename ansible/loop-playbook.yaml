@@ -4,9 +4,20 @@
   become: yes
 
   tasks:
-  - name: Say Hello to ALLs
+  - name: Say Hello to ALL
     debug: msg="Hello {{ item }}"
     loop: 
       - "target1"
       - "target2"
       - "target3"
+  
+  - name: Loop Until
+    shell: echo -n Z >> myfile.txt && cat myfile.txt
+    register: output
+    delay: 2 # seconds
+    retries: 10 # times
+    until: output.stdout.find("ZZZZ") == false
+
+  - name: Print output
+    debug:
+      var: output.stdout
