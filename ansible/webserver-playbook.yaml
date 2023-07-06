@@ -37,13 +37,8 @@
 
 
   - name: Copy page to servers
-    copy: src={{ source_folder }}/{{ item }} dest={{ destin_folder }} mode=0555
-    loop: 
-      - "index.html"
-      - "default.css"
-      - "/images/header-img.jpg"
-      - "/images/img01.jpg"
-      - "/images/main-bg.jpg"
+    copy: src={{ item }} dest={{ destin_folder }} mode=0555
+    with_fileglob: "{{ source_folder }}/*.*"  # Copy all files from source_folder
     
     notify:
       - Restart Apache RedHat
