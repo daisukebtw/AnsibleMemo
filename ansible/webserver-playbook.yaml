@@ -14,24 +14,24 @@
     # Install Apache on RedHat
     - name: Install Apache RedHat
       yum: name=httpd state=installed
+      when: ansible_os_family == "RedHat"
 
     # Enable Service RedHat
     - name: Start service and enable Start on boot (RedHat)
       service: name=httpd state=started enabled=yes
-
-    when: ansible_os_family == "RedHat"
+      when: ansible_os_family == "RedHat"
 
   - block:  # Debian Block
 
     # Install Apache on Debian
     - name: Install Apache Debian
       apt-get: name=apache2 state=installed
+      when: ansible_os_family == "Debian"
 
     # Enable Service Debian
     - name: Start service and enable Start on boot (Debian)
       service: name=apache2 state=started enabled=yes
-
-    when: ansible_os_family == "Debian"
+      when: ansible_os_family == "Debian"
 
 
   - name: Generate index.html files
