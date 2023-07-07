@@ -25,7 +25,7 @@
 
     # Install Apache on Debian
     - name: Install Apache Debian
-      apt-get: name=apache2 state=installed
+      apt: name=apache2 state=installed
       when: ansible_os_family == "Debian"
 
     # Enable Service Debian
