@@ -1,0 +1,17 @@
+---
+- name: Create directories and files
+  hosts: all
+  become: yes
+
+  vars:
+    text: "Passw0rd"
+
+  tasks:
+    - name: Ping test
+      ping:
+
+    - name: Create folders
+      include: create_folders.yaml
+
+    - name: Create files
+      include: create_files.yaml 
