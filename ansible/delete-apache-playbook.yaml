@@ -1,0 +1,12 @@
+---
+- name: Delete Apache from All hosts
+  hosts: all
+  become: yes
+
+  tasks:
+
+    - name: Delete Apache
+      yum: "name=httpd state=absent"
+
+    - name: Clear Apache source destin_folder
+      shell: "rm /var/www/html/*"
