@@ -1,6 +1,6 @@
 ---
 - name: Install Apache and Upload my Web page
-  hosts: all
+  hosts: "{{ host }}"
   become: yes
 
   roles:
