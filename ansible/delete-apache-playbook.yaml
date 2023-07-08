@@ -9,4 +9,4 @@
       yum: "name=httpd state=absent"
 
     - name: Clear Apache source destin_folder
-      shell: "rm /var/www/html/*"
+      file: "src=/var/www/html/* state=absent"
