@@ -4,8 +4,10 @@
   become: yes
 
   tasks:
-    - name: Check all time
-      shell: "uptime > /var/tmp/uptime.txt"
-    
+    - name: Get uptime
+      shell: uptime
+      register: result
+
     - name: Print uptime
-      shell: "cat /var/tmp/uptime.txt"
+      debug:
+        var: result
