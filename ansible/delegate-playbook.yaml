@@ -29,3 +29,16 @@
           Some information
           Password: {{ password }}
       delegate_to: target3
+
+    - name: Reboot my servers
+      shell: sleep 5 && reboot now
+      async: 1
+      poll: 0
+    
+    - name: Wait till my servers is up
+      wait_for:
+        host: targets
+        state: started
+        delay: 5 
+        timeout: 40 # Maximum wait time
+      delegate_to: 127.0.0.1
