@@ -5,4 +5,7 @@
 
   tasks:
     - name: Check all time
-      shell: "uptime"
+      shell: "uptime > /var/tmp/uptime.txt"
+    
+    - name: Print uptime
+      shell: "cat /var/tmp/uptime.txt"
