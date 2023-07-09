@@ -10,4 +10,4 @@
 
     - name: Print uptime
       debug:
-        var: result
+        var: result.stdout
