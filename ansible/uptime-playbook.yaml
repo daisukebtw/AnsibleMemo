@@ -1,0 +1,8 @@
+---
+- name: Check uptime on all hosts
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Check all time
+      shell: "uptime"
