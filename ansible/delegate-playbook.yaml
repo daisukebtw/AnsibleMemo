@@ -1,0 +1,27 @@
+---
+- name: 
+  hosts: all
+  become: yes
+
+  vars:
+    mytext: "Ansible"
+    password: "Passw0rd"
+
+  tasks:
+    - name: Ping test
+      ping:
+
+    - name: Create file1
+      copy:
+        dest: /home/file1.txt
+        content: |
+          Some information
+          Some word: {{ mytext }}
+
+    - name: Create file1
+      copy:
+        dest: /home/file2.txt
+        content: |
+          Some information
+          Password: {{ password }}
+      delegate_to: target3
