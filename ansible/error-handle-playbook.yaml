@@ -1,0 +1,22 @@
+---
+- name: Handling errors
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Install package
+      yum: name=treeeee state=latest
+      ignore_errors: yes
+
+
+    - name: Print HelloWorld!
+      shell: ls -la /var/www/html
+      register: result
+
+    - name: 
+      debug:
+        var: result
+
+    - name: Print Passw0rd
+      shell: echo Passw0rd
+

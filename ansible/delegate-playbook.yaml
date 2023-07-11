@@ -14,6 +14,7 @@
     - name: Unregister Server from Load Balancer
       shell: echo This Server {{ inventory_hostname }} was deregistered from Load Balancer, Node name is {{ ansible_nodename }} >> /home/log.txt
       delegate_to: 127.0.0.1
+#     run_once: true  # Will run only once on first target in inventory list
 
     - name: Create file1
       copy:
