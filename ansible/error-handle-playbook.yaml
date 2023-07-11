@@ -12,11 +12,11 @@
     - name: Get wd path
       shell: ls -la /var/www/html
       register: result
-      failed_when: "'log.txt' in result.stdout_lines"
+#      failed_when: "'log.txt' in result.stdout_lines"
 
     - name: Print wd path
       debug:
-        var: result.stdout_lines
+        var: result
 
     - name: Print Passw0rd
       shell: echo Passw0rd
