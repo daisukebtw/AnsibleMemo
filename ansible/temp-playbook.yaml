@@ -6,6 +6,6 @@
   tasks:
     - name: Create empty file
       copy:
-        dest: /var/www/html
+        dest: /var/www/html/log.txt
         content: |
           Some logs
