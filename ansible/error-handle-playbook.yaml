@@ -12,6 +12,7 @@
     - name: Get wd path
       shell: ls -la /var/www/html
       register: result
+      failed_when: "'log' in result.stdout_lines"
 
     - name: Print wd path
       debug:
