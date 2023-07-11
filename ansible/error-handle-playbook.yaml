@@ -9,13 +9,13 @@
       ignore_errors: yes
 
 
-    - name: Print HelloWorld!
+    - name: Get wd path
       shell: ls -la /var/www/html
       register: result
 
-    - name: 
+    - name: Print wd path
       debug:
-        var: result
+        var: result.stdout_lines
 
     - name: Print Passw0rd
       shell: echo Passw0rd

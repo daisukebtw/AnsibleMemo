@@ -1,0 +1,11 @@
+---
+- name: Create empty file
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Create empty file
+      copy:
+        dest: /home/log.txt
+        content: |
+          Some logs
