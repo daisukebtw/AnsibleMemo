@@ -2,17 +2,19 @@
 - name: Handling errors
   hosts: all
   become: yes
+  any_errors_fatal: true  ##
 
   tasks:
     - name: Install package
       yum: name=treeeee state=latest
-      ignore_errors: yes
-
+      ignore_errors: yes   ##
+  
 
     - name: Get wd path
       shell: ls -la /var/www/html
       register: result
-      failed_when: "'log.txt' in result.stdout"
+      failed_when: "'log.txt' in result.stdout"   ##
+
 
     - name: Print wd path
       debug:
