@@ -1,0 +1,27 @@
+---
+- name: Ansible test Vault
+  hosts: all
+  become: yes
+
+  vars: 
+    password: !vault |   # Encryped password
+          $ANSIBLE_VAULT;1.1;AES256
+          39313730646435613238626164343933636130633261633066613835666165316566393736366633
+          3630633063366432396534313930636466656432303133370a323665333132303030613062663333
+          63333864616132313966383838376331623135636631313136373030366132313465366433316164
+          3962653365303135660a336564636132363233376535626435653864393234333834396239323765
+          6239
+
+  tasks:
+    - name: Install package Tree
+      yum: name=tree state=installed
+
+    - name: Create config file
+      copy: 
+        dest: /home/target/myconfig.conf
+        content: |
+          port = 9092
+          log = 7days
+          home = /opt/kafka/bin
+          user = admin
+          password = {{ password }}
