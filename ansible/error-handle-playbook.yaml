@@ -6,7 +6,7 @@
 
   tasks:
     - name: Install package
-      yum: name=treeeee state=latest
+      yum: name=treeeee state=installed
       ignore_errors: yes   ##
   
 

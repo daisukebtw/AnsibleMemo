@@ -1,0 +1,21 @@
+---
+- name: Ansible test Vault
+  hosts: all
+  become: yes
+
+  vars: 
+    password: Passw0rd
+
+  tasks:
+    - name: Install package Tree
+      yum: name=tree state=installed
+
+    - name: Create config file
+      copy: 
+        dest: /home/target/myconfig.conf
+        content: |
+          port = 9092
+          log = 7days
+          home = /opt/kafka/bin
+          user = admin
+          password = {{ password }}
