@@ -1,8 +1,8 @@
 [dev]
-target1 ansible_host=192.168.233.137
+target1 ansible_host=192.168.233.130
 
 [prod]
-target2 ansible_host=192.168.233.136
+target2 ansible_host=192.168.233.131
 target3 ansible_host=192.168.233.132
 
 [targets:children]
