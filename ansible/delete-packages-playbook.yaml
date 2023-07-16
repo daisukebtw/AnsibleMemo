@@ -5,8 +5,11 @@
 
   tasks:
 
-    - name: Delete Apache
+    - name: Delete httpd package
       yum: "name=httpd state=absent"
 
     - name: Clear Apache page folder
       shell: "rm /var/www/html/*"
+
+    - name: Delete epel-release package
+      yum: "name=epel-release state=absent"
