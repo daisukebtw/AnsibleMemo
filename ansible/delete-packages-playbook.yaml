@@ -10,6 +10,7 @@
 
     - name: Clear Apache page folder
       shell: "rm /var/www/html/*"
+      ignore_errors: yes
 
     - name: Delete epel-release package
       yum: "name=epel-release state=absent"
