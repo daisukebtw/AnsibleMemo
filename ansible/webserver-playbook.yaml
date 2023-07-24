@@ -44,7 +44,7 @@
       when: ansible_os_family == "Alpine"
 
     - name: Enable Apache Service
-      rc-service: name=apache2 state=started enabled=yes
+      rc: name=apache2 state=started enabled=yes
       when: ansible_os_family == "Alpine"
 
 
