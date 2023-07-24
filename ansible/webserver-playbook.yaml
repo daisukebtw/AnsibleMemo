@@ -43,9 +43,10 @@
       apk: name=openrc
       when: ansible_os_family == "Alpine"
 
-    - name: Enable Apache Service
+    - name: Enable Apache Service on Alpine Linux
       command: /etc/init.d/apache2 start
       when: ansible_os_family == "Alpine"
+      ignore_errors: yes
 
 
 
