@@ -39,9 +39,15 @@
       apk: name=apache2 state=installed
       when: ansible_os_family == "Alpine"
 
-    - name: Enable Apache Service
-      service: name=apache2 state=started enabled=yes
+    - name: Install rc-service on Alpine Linux
+      apk: name=openrc
       when: ansible_os_family == "Alpine"
+
+    - name: Enable Apache Service
+      rc-service: name=apache2 state=started enabled=yes
+      when: ansible_os_family == "Alpine"
+
+
 
   - name: Generate index.html file
     template: src={{ source_folder }}/index.j2 dest={{ destin_folder }}/index.html mode=0555
@@ -71,5 +77,5 @@
     when: ansible_os_family == "Debian"
 
   - name: Restart Apache Alpine
-    service: name=apache2 state=restarted
+    rc-service: name=apache2 state=restarted
     when: ansible_os_family == "Alpine"
