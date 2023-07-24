@@ -14,12 +14,12 @@
     # Install Apache on RedHat
     - name: Install Apache RedHat
       yum: name=httpd state=installed
-      when: ansible_os_family == "RedHat" or "Alpine"
+      when: ansible_os_family == "RedHat"
 
     # Enable Service RedHat
     - name: Start service and enable Start on boot (RedHat)
       service: name=httpd state=started enabled=yes
-      when: ansible_os_family == "RedHat" or "Alpine"
+      when: ansible_os_family == "RedHat" 
 
   - block:  # Debian Block
 
@@ -32,13 +32,23 @@
     - name: Start service and enable Start on boot (Debian)
       service: name=apache2 state=started enabled=yes
       when: ansible_os_family == "Debian"
+  
+  - block: 
 
+    - name: Install Apache on Alpine Linux
+      apk: name=apache2 state=installed
+      when: ansible_os_family == "Alpine"
+
+    - name: Enable Apache Service
+      service: name=apache2 state=started enabled=yes
+      when: ansible_os_family == "Alpine"
 
   - name: Generate index.html file
     template: src={{ source_folder }}/index.j2 dest={{ destin_folder }}/index.html mode=0555
     notify: 
       - Restart Apache RedHat
       - Restart Apache Debian
+      - Restart Apache Alpine
 
 #  - name: Copy page to servers
 #    copy: src={{ item }} dest={{ destin_folder }} mode=0555
@@ -59,3 +69,7 @@
   - name: Restart Apache Debian
     service: name=apache2 state=restarted
     when: ansible_os_family == "Debian"
+
+  - name: Restart Apache Alpine
+    service: name=apache2 state=restarted
+    when: ansible_os_family == "Alpine"
