@@ -44,7 +44,7 @@
       when: ansible_os_family == "Alpine"
 
     - name: Enable Apache Service
-      rc: name=apache2 state=started enabled=yes
+      command: /etc/init.d/apache2 start
       when: ansible_os_family == "Alpine"
 
 
@@ -77,5 +77,5 @@
     when: ansible_os_family == "Debian"
 
   - name: Restart Apache Alpine
-    rc-service: name=apache2 state=restarted
+    command: /etc/init.d/apache2 restart
     when: ansible_os_family == "Alpine"
