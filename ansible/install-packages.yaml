@@ -1,0 +1,19 @@
+---
+- name: Install packages from list
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Install epel-release package
+    yum: name=epel-release state=installed
+
+  - name: Install packages from list
+    yum: name={{ item }} state=installed update_cache=yes
+    with_items:
+      - httpd
+      - net-tools
+      - nginx 
+      - bash
+      - curl
+      - wget
+      
