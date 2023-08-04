@@ -3,12 +3,9 @@
   hosts: test
   become: yes
 
-  vars:
-    script_path: ~/../bezdar/scripts
-
   tasks: 
     - name: Chmod script
-      file: dest={{ script_path }}/script.sh mode=a+x
+      file: dest=~/../bezdar/temp/script.sh mode=a+x
     
     - name: Launch script on host
       shell: ./script.sh
