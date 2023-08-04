@@ -4,6 +4,9 @@
   become: yes
 
   tasks:
+  - name: OS Update
+    yum: update_cache=yes
+
   - name: Install epel-release package
     yum: name=epel-release state=installed
 
