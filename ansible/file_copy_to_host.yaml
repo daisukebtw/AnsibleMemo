@@ -4,7 +4,7 @@
   become: yes
 
   vars:
-    source: ./transfer/*
+    source: ./transfer/
     destination: ~/temp/ 
 
   tasks:
@@ -12,4 +12,3 @@
       copy: src={{ source }} dest={{ destination }} mode=0644
       with_fileglob: "{{ source }}/*.*"
 
-      
