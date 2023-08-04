@@ -3,7 +3,7 @@
   hosts: test
 
   vars:
-    source: ~/transfer/
+    source: ./transfer/
     destination: ~/temp/ 
 
   tasks:
