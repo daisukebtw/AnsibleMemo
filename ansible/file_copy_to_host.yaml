@@ -1,0 +1,15 @@
+---
+- name: Copy files from path to host
+  hosts: test
+  become: yes
+
+  vars:
+    source: ./transfer/*
+    destination: ~/temp/ 
+
+  tasks:
+    - name: Copy files from source to destination
+      copy: src={{ source }} dest={{ destination }} mode=0644
+      with_fileglob: "{{ source }}/*.*"
+
+      
