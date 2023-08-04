@@ -1,11 +1,11 @@
 ---
 - name: Launch bash script on host remotely
   hosts: test
-  become: yes
 
   tasks: 
     - name: Chmod script
       file: dest=/home/bezdar/temp/script.sh mode=a+x
-    
+      become: yes
+
     - name: Launch script on host
       shell: ./script.sh
