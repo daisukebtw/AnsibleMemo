@@ -8,6 +8,9 @@
     destination: ~/temp/ 
 
   tasks:
+    - name: Make Destination Directory
+      shell: mkdir ~/temp 
+
     - name: Copy files from source to destination
       copy: src={{ source }} dest={{ destination }} mode=0644
       with_fileglob: "{{ source }}/*.*"
