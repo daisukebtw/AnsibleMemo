@@ -4,7 +4,7 @@
   become: yes
 
   vars:
-    script_path: ~/scripts
+    script_path: ~/../bezdar/scripts
 
   tasks: 
     - name: Chmod script
