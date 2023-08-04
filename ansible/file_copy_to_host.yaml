@@ -1,7 +1,6 @@
 ---
 - name: Copy files from path to host
   hosts: test
-  become: yes
 
   vars:
     source: ./transfer/
