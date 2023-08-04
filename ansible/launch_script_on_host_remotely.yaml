@@ -4,8 +4,7 @@
 
   tasks: 
     - name: Chmod script
-      file: dest=~/temp/script.sh mode=a+x
-      become: yes
+      file: dest=~/temp/script.sh mode=a+x -b
 
     - name: Launch script on host
       shell: ./script.sh
