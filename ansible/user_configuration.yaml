@@ -3,10 +3,13 @@
   hosts: test
   become: yes
 
+  vars:
+    mypassword: temp
+
   tasks:
     - name: Create user
       ansible.builtin.user:
         name: tempuser
         shell: /bin/bash
-        password: "{{ temp | password_hash('sha512') }}"
+        password: "{{ mypassword | password_hash('sha512') }}"
 
