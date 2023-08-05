@@ -6,7 +6,7 @@
   tasks:
     - name: Check open ports
       ansible.builtin.shell: 
-        cmd: grep -w "{{ item }}" /etc/services
+        cmd: "grep -w {{ item }} /etc/services"
       with_item:
         - 80/tcp
         - 443/tcp
