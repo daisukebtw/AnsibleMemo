@@ -8,5 +8,5 @@
       ansible.builtin.user:
         name: tempuser
         shell: /bin/bash
-        password: {{ upassword | password_hash('sha512') }}
+        password: "{{ temp | password_hash('sha512') }}"
 
