@@ -8,6 +8,5 @@
       ansible.builtin.user:
         name: tempuser
         shell: /bin/bash
-
-
+        password: temppass
 
