@@ -4,10 +4,10 @@
   become: yes
 
   tasks: 
-   - name: Open HTTP and HTTPS ports
-     ansible.posix.firewalld: 
-      port: "{{ item }}"
-      state: enabled
-     with_items: 
-      - 80/tcp
-      - 443/tcp
+    - name: Open HTTP and HTTPS ports
+      ansible.posix.firewalld: 
+       port: "{{ item }}"
+       state: enabled
+      with_items: 
+       - 80/tcp
+       - 443/tcp
