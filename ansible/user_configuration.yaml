@@ -8,6 +8,6 @@
       ansible:
         name: tempuser
         shell: /bin/bash
-        password: {{ temppass | password_hash('sha512') }}
+        password: "{{ temppass | password_hash('sha512') }}"
 
 
