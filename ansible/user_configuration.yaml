@@ -8,5 +8,5 @@
       ansible.builtin.user:
         name: tempuser
         shell: /bin/bash
-        password: temppass
+        update_password: on_create
 
