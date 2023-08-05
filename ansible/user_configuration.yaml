@@ -5,8 +5,9 @@
 
   tasks:
     - name: Create user
-      ansible.builtin.user:
+      ansible:
         name: tempuser
         shell: /bin/bash
-        update_password: on_create
+        password: {{ temppass | password_hash('sha512') }}
+
 
