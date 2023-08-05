@@ -12,4 +12,4 @@
 
     - name: Change hostname on Docker container
       docker_container_exec:
-        command: echo target > /etc/hostname
+        command: /bin/bash -c "echo target > /etc/hostname"
