@@ -8,6 +8,6 @@
       ansible.builtin.shell: 
         cmd: grep -w "{{ item }}" /etc/services
       with_item:
-       - 80/tcp
-       - 443/tcp
-       - 22/tcp
+        - 80/tcp
+        - 443/tcp
+        - 22/tcp
