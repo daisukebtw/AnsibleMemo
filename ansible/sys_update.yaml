@@ -1,0 +1,9 @@
+
+---
+- name: Update packages on host
+  hosts: test
+  become: yes
+
+  tasks:
+    - name: Update packages
+      yum: update_cache=yes
