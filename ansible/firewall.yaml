@@ -5,7 +5,7 @@
 
   tasks: 
    - name: Open HTTP and HTTPS ports
-     ansible,posix.firewalld: 
+     ansible.posix.firewalld: 
       port: "{{ item }}"
       protocol: tcp
      with_items: 
