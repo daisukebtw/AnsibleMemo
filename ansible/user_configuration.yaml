@@ -4,12 +4,12 @@
   become: yes
 
   vars:
-    mypassword: temp
+    password: temp
 
   tasks:
     - name: Create user
       ansible.builtin.user:
         name: tempuser
         shell: /bin/bash
-        password: "{{ mypassword | password_hash('sha512') }}"
+        password: "{{ password | password_hash('sha512') }}"
 
