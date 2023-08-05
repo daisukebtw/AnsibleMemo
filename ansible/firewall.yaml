@@ -7,7 +7,6 @@
    - name: Open HTTP and HTTPS ports
      ansible.posix.firewalld: 
       port: {{ item }}
-      protocol: tcp
      with_items: 
-      - http
-      - https
+      - 80/tcp
+      - 443/tcp
