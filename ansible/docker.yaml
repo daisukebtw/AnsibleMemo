@@ -27,6 +27,12 @@
         - containerd.io
         - docker-buildx-plugin
         - docker-compose-plugin
+    
+    - name: Install Python3
+      ansible.builtin.yum:
+        name: python3
+        state: installed
+
 
     - name: Launch Docker container
       community.docker.docker_container:
