@@ -10,12 +10,16 @@
         image: ubuntu
         state: started
 
-    - name: Change hostname on Docker container
+    # - name: Change hostname on Docker container
+    #   community.docker.docker_container_exec:
+    #     container: test
+    #     command: /bin/bash -c "echo target > /etc/hostname"
+    #     chdir: /root
+    - name: Run a simple command (command)
       community.docker.docker_container_exec:
         container: test
-        command: /bin/bash -c "echo target > /etc/hostname"
+        command: /bin/bash -c "ls -lah"
         chdir: /root
-      register: result
-
+  
 
 # Maintenances  
