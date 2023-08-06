@@ -11,7 +11,7 @@
         state: started
 
     - name: Change hostname on Docker container
-      community.docker.docker_container_exec:
+      docker_container_exec:
         container: test
         command: /bin/bash -c "echo target > /etc/hostname"
   
