@@ -1,0 +1,39 @@
+---
+- name: install docker
+  hosts: test
+  become: yes
+  tasks:
+    - name: Install yum-utils package
+      yum:
+        name: yum-utils
+        state: installed    
+
+    - name: install docker dependencies
+      yum:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg-agent
+          - software-properties-common
+        update_cache: yes
+    - name: add docker gpg key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+        keyring: /etc/apt/keyrings/docker.gpg
+    - name: add docker repository
+      yum_repository:
+        filename: docker 
+        repo: https://download.docker.com/linux/centos/7/x86_64/stable/
+        state: present
+    - name: install docker engine
+      yum:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-scan-plugin
+          - docker-compose-plugin
+        update_cache: yes
