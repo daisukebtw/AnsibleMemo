@@ -14,11 +14,11 @@
           - ca-certificates
           - curl
         update_cache: yes
-    - name: add docker gpg key
-      yum_key:
-        url: https://download.docker.com/linux/ubuntu/gpg
-        state: present
-        keyring: /etc/apt/keyrings/docker.gpg
+    # - name: add docker gpg key
+    #   yum_key:
+    #     url: https://download.docker.com/linux/ubuntu/gpg
+    #     state: present
+    #     keyring: /etc/apt/keyrings/docker.gpg
     - name: add docker repository
       yum_repository:
         filename: docker 
