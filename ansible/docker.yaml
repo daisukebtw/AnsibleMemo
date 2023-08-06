@@ -7,6 +7,7 @@
     - name: Install Docker
       ansible.builtin.yum:
         name: "{{ item }}"
+        state: installed
       with_items:
         - docker-ce
         - docker-ce-cli
