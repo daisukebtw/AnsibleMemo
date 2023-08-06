@@ -4,6 +4,16 @@
   become: yes
 
   tasks:
+    - name: Install Docker
+      ansible.buildin.yum:
+        name: "{{ item }}"
+      with_items:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+        - docker-buildx-plugin
+        - docker-compose-plugin
+
     - name: Launch Docker container
       community.docker.docker_container:
         name: test
