@@ -4,34 +4,34 @@
   become: yes
 
   tasks:
-    # - name: Install yum-utils package
-    #   ansible.builtin.yum:
-    #     name: yum-utils
-    #     state: installed
+    - name: Install yum-utils package
+      ansible.builtin.yum:
+        name: yum-utils
+        state: installed
       
-    # - name: Add Yum Repository
-    #   ansible.builtin.yum_repository:
-    #     name: docker
-    #     description: docker repo
-    #     baseurl: https://download.docker.com/linux/centos/7/x86_64/stable/
-    #     state: present
-    #     gpgcheck: no
+    - name: Add Yum Repository
+      ansible.builtin.yum_repository:
+        name: docker
+        description: docker repo
+        baseurl: https://download.docker.com/linux/centos/7/x86_64/stable/
+        state: present
+        gpgcheck: no
 
-    # - name: Install Docker
-    #   ansible.builtin.yum:
-    #     name: "{{ item }}"
-    #     state: installed
-    #   with_items:
-    #     - docker-ce
-    #     - docker-ce-cli
-    #     - containerd.io
-    #     - docker-buildx-plugin
-    #     - docker-compose-plugin
+    - name: Install Docker
+      ansible.builtin.yum:
+        name: "{{ item }}"
+        state: installed
+      with_items:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+        - docker-buildx-plugin
+        - docker-compose-plugin
     
-    # - name: Install Python3
-    #   ansible.builtin.yum:
-    #     name: python3
-    #     state: installed
+    - name: Install Python3
+      ansible.builtin.yum:
+        name: python3
+        state: installed
 
 
     - name: Launch Docker container
