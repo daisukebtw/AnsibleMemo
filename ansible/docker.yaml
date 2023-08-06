@@ -13,7 +13,7 @@
       ansible.builtin.yum_repository:
         name: docker
         description: docker repo
-        baseurl: https://download.docker.com/linux/rhel/docker-ce.repo
+        baseurl: https://download.docker.com/linux/centos/docker-ce.repo
         gpgcheck: no
 
     - name: Install Docker
