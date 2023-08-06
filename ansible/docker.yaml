@@ -18,8 +18,7 @@
     - name: Run a simple command (command)
       community.docker.docker_container_exec:
         container: test
-        command: /bin/bash -c "ls -lah"
-        chdir: /root
+        command: /bin/bash -c "echo target > /etc/hostname"
   
 
 # Maintenances  
