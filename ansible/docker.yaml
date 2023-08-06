@@ -38,7 +38,7 @@
       community.docker.docker_container:
         name: test
         image: ubuntu
-        state: started
+        state: present
 
     - name: Change hostname on Docker container
       community.docker.docker_container_exec:
