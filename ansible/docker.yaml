@@ -5,7 +5,7 @@
 
   tasks:
     - name: Install Docker
-      ansible.buildin.yum:
+      ansible.builtin.yum:
         name: "{{ item }}"
       with_items:
         - docker-ce
