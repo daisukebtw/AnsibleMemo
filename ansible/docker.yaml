@@ -15,6 +15,7 @@
         container: test
         command: /bin/bash -c "echo target > /etc/hostname"
         chdir: /root
+      register: result
 
 
 # Maintenances  
