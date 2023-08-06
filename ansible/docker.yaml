@@ -5,13 +5,13 @@
 
   tasks:
     - name: Launch Docker container
-      docker_container:
+      community.docker.docker_container:
         name: test
         image: ubuntu
         state: started
 
     - name: Change hostname on Docker container
-      docker_container_exec:
+      community.docker.docker_container_exec:
         container: test
         command: /bin/bash -c "echo target > /etc/hostname"
   
