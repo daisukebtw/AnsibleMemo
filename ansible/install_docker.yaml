@@ -13,7 +13,6 @@
         name:
           - ca-certificates
           - curl
-          - software-properties-common
         update_cache: yes
     - name: add docker gpg key
       apt_key:
