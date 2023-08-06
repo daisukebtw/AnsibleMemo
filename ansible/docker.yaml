@@ -10,10 +10,10 @@
         image: ubuntu
         state: started
 
-    - name: Change hostname on Docker container
-      docker_container_exec:
-        container: test
-        command: /bin/bash -c "echo target > /etc/hostname"
+    # - name: Change hostname on Docker container
+    #   docker_container_exec:
+    #     container: test
+    #     command: /bin/bash -c "echo target > /etc/hostname"
   
 
-# Maintenances  s
+# Maintenances
