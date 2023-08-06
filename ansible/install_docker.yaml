@@ -21,7 +21,7 @@
     #     keyring: /etc/apt/keyrings/docker.gpg
     - name: add docker repository
       yum_repository:
-        filename: docker 
+        name: docker 
         repo: https://download.docker.com/linux/centos/7/x86_64/stable/
         state: present
     - name: install docker engine
