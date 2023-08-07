@@ -4,6 +4,11 @@
   become: yes
 
   tasks: 
+    - name: Install firewalld
+      apt:
+        name: firewalld
+        state: present
+
     - name: Open HTTP and HTTPS ports
       ansible.posix.firewalld: 
        port: "{{ item }}"

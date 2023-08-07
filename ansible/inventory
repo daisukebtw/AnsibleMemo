@@ -5,9 +5,10 @@ target1 ansible_host=172.17.0.3
 target2 ansible_host=172.17.0.4
 
 [test]
-test ansible_host=192.168.0.111
+test ansible_host=192.168.0.104
 
 [targets:children]
 dev
 prod
 test
+

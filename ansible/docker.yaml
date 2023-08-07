@@ -4,23 +4,37 @@
   become: yes
 
   tasks:
-    - name: Install yum-utils package
-      ansible.builtin.yum:
-        name: yum-utils
-        state: installed
-      
-    - name: Add Yum Repository
-      ansible.builtin.yum_repository:
-        name: docker
-        description: docker repo
-        baseurl: https://download.docker.com/linux/centos/7/x86_64/stable/
+    - name: Update apt repo and cache
+      apt:
+        update_cache: yes
+        force_apt_get: yes
+        upgrade: dist
+
+    - name: Install packages
+      ansible.builtin.apt:
+        name: "{{ item }}"
         state: present
-        gpgcheck: no
+      ignore_errors: yes  
+      with_items:
+        - ca-certificates
+        - curl
+        - gnupg
+
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu bionic stable
+        state: present
 
     - name: Install Docker
-      ansible.builtin.yum:
+      ansible.builtin.apt:
         name: "{{ item }}"
-        state: installed
+        update_cache: yes
+        state: present
       with_items:
         - docker-ce
         - docker-ce-cli
@@ -28,22 +42,29 @@
         - docker-buildx-plugin
         - docker-compose-plugin
     
-    - name: Install Python3
-      ansible.builtin.yum:
-        name: python3
-        state: installed
+    - name: Install Python3 and pip
+      ansible.builtin.apt:
+        name: "{{ item}}"
+        state: present
+      with_items:
+        - python3
+        - python3-pip
 
+    - name: Install Docker module for Python
+      pip:
+        name: docker
 
     - name: Launch Docker container
       community.docker.docker_container:
         name: test
-        image: ubuntu
-        state: present
+        image: httpd
+        state: started
+        restart_policy: "unless-stopped"
 
     - name: Change hostname on Docker container
       community.docker.docker_container_exec:
         container: test
-        command: /bin/bash -c "echo target > /etc/hostname"
+        command: /bin/bash -c "echo Hello World! > /usr/local/apache2/htdocs/index.html"
   
 
 # Maintenances
