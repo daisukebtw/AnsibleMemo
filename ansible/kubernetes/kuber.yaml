@@ -22,4 +22,8 @@
     - name: test
       kubernetes.core.k8s:
         state: present
-        src: ./cluster/k8s/deployment.yaml
+        src: "~/AnsibleMemo/ansible/kubernetes/k8s/{{ item }}"
+      with_items:
+        - deployment.yaml
+        - daemonset.yaml
+        - services.yaml
