@@ -1,5 +1,5 @@
 ---
-- name: Launch and change hostname on Docker container
+- name: Setup instance and Launch Docker container
   hosts: test
   become: yes
 
