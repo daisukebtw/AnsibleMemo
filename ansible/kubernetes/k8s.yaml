@@ -23,6 +23,7 @@
       kubernetes.core.k8s:
         kubeconfig: ~/.kube/config
         state: present
+        namespace: testing
         src: "./k8s/{{ item }}"
       with_items:
         - deployment.yaml
