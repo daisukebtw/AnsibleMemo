@@ -21,6 +21,7 @@
 
     - name: Applying cluster
       kubernetes.core.k8s:
+        kubeconfig: ~/.kube/config
         state: present
         src: "./k8s/{{ item }}"
       with_items:
