@@ -21,9 +21,5 @@
 
     - name: test
       kubernetes.core.k8s:
-        name: test
-        api_version: apps/v1
-        kind: Deployment
         state: present
-        replicas: 3
-      
+        src: ./cluster/k8s/*
