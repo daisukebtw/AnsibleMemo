@@ -1,15 +1,16 @@
 ---
 - name: nothing
   hosts: localhost
-  become: yes
+  gather_facts: false
 
   tasks:
-    - name: Install pre-requisites
-      pip:
-        name: 
-          - openshift
-          - pyyaml
-          - kubernetes
+    # - name: Install pre-requisites
+    #   become: yes
+    #   pip:
+    #     name: 
+    #       - openshift
+    #       - pyyaml
+    #       - kubernetes
 
     - name: Create k8s namespace
       kubernetes.core.k8s:
