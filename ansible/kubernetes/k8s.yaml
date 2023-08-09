@@ -1,5 +1,5 @@
 ---
-- name: nothing
+- name: Apply cluster from files
   hosts: localhost
   become: yes
 
