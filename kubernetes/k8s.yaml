@@ -3,6 +3,9 @@
   hosts: localhost
   become: yes
 
+  vars:
+    K8S_AUTH_KUBECONFIG: ~/.kube/config
+
   tasks:
     - name: Install pre-requisites
       pip:
